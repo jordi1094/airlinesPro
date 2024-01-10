@@ -10,11 +10,8 @@ let listadoVuelos = [
 const despedida = "Muchas Gracias, ¡hasta la proxima!"
 
 
-
-let id = ""
-
-function iniciarPrograma(id){
-    id = prompt('Hola , ¿Quieres entrar como usuario o administrador? (USER / ADMIN)  ').toUpperCase();
+function iniciarPrograma(){
+    let id = prompt('Hola , ¿Quieres entrar como usuario o administrador? (USER / ADMIN)  ').toUpperCase();
     
         if (id === "USER"){
             buscarVuelos()
@@ -80,7 +77,7 @@ function nuevaBusqueda(){
             salidaPrograma()
         };
 };
-function salidaPrograma(id) {
+function salidaPrograma() {
     console.log("¿deseas salir de la aplicación?");
      console.log("si deseas realizar otra gestión o busqueda escribe CANCEL.") 
      let salida = prompt("Si deseas salir de la aplicación introduce CONFIRM.   ").toUpperCase;
@@ -88,11 +85,11 @@ function salidaPrograma(id) {
         console.log(despedida);
     }if(salida === "CANCEL"){
         
-        iniciarPrograma(id);
+        iniciarPrograma();
         
     }
 };
 
 
-iniciarPrograma(id);
+iniciarPrograma();
 
