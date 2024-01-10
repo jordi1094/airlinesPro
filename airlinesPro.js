@@ -7,28 +7,28 @@ let listadoVuelos = [
     jktr = {indice: "jktr",origen: "Luxemburgo", destino: "Tokyo", compañia: " Lufthansa", precio: "1080€"},
     kodc = {indice: "kodc",origen: "Túnez", destino: "Rabat", compañia: "Easyjet", precio: "300€" }
 ]
-let despedida = "Muchas Gracias, ¡hasta la proxima!"
+const despedida = "Muchas Gracias, ¡hasta la proxima!"
 
 
-iniciarPrograma();
-function iniciarPrograma(){
-    let id = prompt('Hola , ¿Eres usuario o administrador? (USER / ADMIN)  ').toUpperCase();
+
+let id = ""
+
+function iniciarPrograma(id){
+    id = prompt('Hola , ¿Quieres entrar como usuario o administrador? (USER / ADMIN)  ').toUpperCase();
     
         if (id === "USER"){
             buscarVuelos()
         }if(id === "ADMIN"){
             gestionVuelos()
-        }if(id !== "USER" || id !== "ADMIN"){
-                console.log("Lo siento, no estas registrado como usuario o administrador");
-                console.log(despedida)
-            };
+        };
 };
-function generarCadenaAleatoria(cadenaAleatoria) {
-    cadenaAleatoria = Math.random().toString(36).substring(2, 6);
-    return cadenaAleatoria;
+
+function generarCadenaAleatoria() {
+    return cadenaAleatoria = Math.random().toString(36).substring(2, 6);
+    
 };
 function gestionVuelos(){
-    let accion = prompt("¿Deseas ELIMINAR, AÑADIR, CONSULTAR un nuevo vuelo o SALIR?   ").toUpperCase();
+    let accion = prompt("¿Deseas ELIMINAR, AÑADIR, CONSULTAR un vuelo?   ").toUpperCase();
     if(accion === "ELIMINAR"){
         console.log("Aqui tienes el listado de vuelos.")
         
@@ -37,26 +37,24 @@ function gestionVuelos(){
         let indiceEliminar = listadoVuelos.indexOf( vuelo => vuelo.codigo === codigoEliminar)
         listadoVuelos.splice(indiceEliminar,1)
         console.log(listadoVuelos);
-        gestionVuelos()
+        salidaPrograma()
     }if(accion === "AÑADIR"){
-        let cadenaAleatoria = ""
-        generarCadenaAleatoria(cadenaAleatoria)
-        cadenaAleatoria = cadenaAleatoria.toString()
-        console.log(cadenaAleatoria)
-        cadenaAleatoria = {};
-        cadenaAleatoria["codigo"] = cadenaAleatoria
-        cadenaAleatoria["origen"] = prompt("Indica el origen del vuelo:   ");
-        cadenaAleatoria["destino"] = prompt("Indica el destino del vuelo:   ");
-        cadenaAleatoria["compañia"] = prompt("Indica la compañia de vuelo:   ");
-        cadenaAleatoria["precio"] = prompt("indica el precio del vuelo:   ")
-        listadoVuelos.push(cadenaAleatoria)
-        gestionVuelos()
+        generarCadenaAleatoria()
+        let codigo = cadenaAleatoria.toString()
+        let nuevoVuelo = codigo
+        nuevoVuelo = {}
+        nuevoVuelo["codigo"] = codigo
+        nuevoVuelo["origen"] = prompt("Indica el origen del vuelo:   ");
+        nuevoVuelo["destino"] = prompt("Indica el destino del vuelo:   ");
+        nuevoVuelo["compañia"] = prompt("Indica la compañia de vuelo:   ");
+        nuevoVuelo["precio"] = prompt("indica el precio del vuelo:   ")
+        listadoVuelos.push(nuevoVuelo)
+        console.log(nuevoVuelo)
+        salidaPrograma()
     }if(accion === "CONSULTAR"){
         console.log(listadoVuelos)
-        gestionVuelos()
-    }if(accion === "SALIR") {
-        console.log(despedida)
-    } ;
+        salidaPrograma()
+    }
 };
 function buscarVuelos(){
     let precioVueloUsiario = prompt('¿Qué precio tiene el vuelo que buscas?   ');
@@ -79,8 +77,22 @@ function nuevaBusqueda(){
         if(nuevaBusqueda === "SI"){
             buscarVuelos();
         }else{
-            console.log(despedida)
+            salidaPrograma()
         };
 };
+function salidaPrograma(id) {
+    console.log("¿deseas salir de la aplicación?");
+     console.log("si deseas realizar otra gestión o busqueda escribe CANCEL.") 
+     let salida = prompt("Si deseas salir de la aplicación introduce CONFIRM.   ").toUpperCase;
+    if(salida ==="CONFIRM") {
+        console.log(despedida);
+    }if(salida === "CANCEL"){
+        
+        iniciarPrograma(id);
+        
+    }
+};
 
+
+iniciarPrograma(id);
 
