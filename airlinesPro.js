@@ -2,10 +2,10 @@ const prompt = require('prompt-sync')();
 
 let listadoVuelos = [
     otgn = {codigo: "otgn", origen: "barcelona", destino: "Islas Feroe", compañia: "Atlantic Airways", precio: "100€"}, 
-    tjgy = {indice: "tjgy", origen: "Roma", destino: "Lisboa", compañia: "vueling", precio: "70€"},
-    ghsd = {indice: "ghsd", origen: "Amsterdam", destino: "Berlín", compañia: "Air Europa", precio: "80€" },
-    jktr = {indice: "jktr",origen: "Luxemburgo", destino: "Tokyo", compañia: " Lufthansa", precio: "1080€"},
-    kodc = {indice: "kodc",origen: "Túnez", destino: "Rabat", compañia: "Easyjet", precio: "300€" }
+    tjgy = {codigo: "tjgy", origen: "Roma", destino: "Lisboa", compañia: "vueling", precio: "70€"},
+    ghsd = {codigo: "ghsd", origen: "Amsterdam", destino: "Berlín", compañia: "Air Europa", precio: "80€" },
+    jktr = {codigo: "jktr",origen: "Luxemburgo", destino: "Tokyo", compañia: " Lufthansa", precio: "1080€"},
+    kodc = {codigo: "kodc",origen: "Túnez", destino: "Rabat", compañia: "Easyjet", precio: "300€" }
 ]
 const despedida = "Muchas Gracias, ¡hasta la proxima!"
 
@@ -79,15 +79,13 @@ function nuevaBusqueda(){
 };
 function salidaPrograma() {
     console.log("¿deseas salir de la aplicación?");
-     console.log("si deseas realizar otra gestión o busqueda escribe CANCEL.") 
-     let salida = prompt("Si deseas salir de la aplicación introduce CONFIRM.   ").toUpperCase;
+    console.log("si deseas realizar otra gestión o busqueda escribe CANCEL.");
+    let salida = prompt("Si deseas salir de la aplicación introduce CONFIRM.   ").toUpperCase();
     if(salida ==="CONFIRM") {
         console.log(despedida);
     }if(salida === "CANCEL"){
-        
         iniciarPrograma();
-        
-    }
+    };
 };
 
 
